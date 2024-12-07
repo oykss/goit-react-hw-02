@@ -15,9 +15,11 @@ export default function App() {
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
   const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
 
-  const handleFeedback = type => {
+  const updateFeedback = type =>
     setFeedback({ ...feedback, [type]: feedback[type] + 1 });
-  };
+
+  const resetFeedback = () => setFeedback({ good: 0, neutral: 0, bad: 0 });
+
   useEffect(() => {}, [feedback]);
   return (
     <>
@@ -25,17 +27,11 @@ export default function App() {
         name="Sip Happens Café"
         desc="Please leave your feedback about our service by selecting one of the options below."
       />
-      <ul>
-        {Object.keys(feedback).map(type => (
-          <li key={type}>
-            <Options
-              type={type}
-              handleClick={handleFeedback}
-              total={totalFeedback}
-            />
-          </li>
-        ))}
-      </ul>
+      <Options
+        types={Object.keys(feedback)}
+        callback={{ updateFeedback, resetFeedback }}
+        total={totalFeedback}
+      />
       {totalFeedback ? (
         <Feedback
           {...feedback}
