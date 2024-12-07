@@ -6,11 +6,16 @@ import Feedback from '../Feedback/Feedback';
 import Notification from '../Notification/Notification';
 
 export default function App() {
-  const [feedback, setFeedback] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
+  const [feedback, setFeedback] = useState(() => {
+    const savedFeedback = localStorage.getItem('feedback');
+    return savedFeedback
+      ? JSON.parse(savedFeedback)
+      : { good: 0, neutral: 0, bad: 0 };
   });
+
+  useEffect(() => {
+    localStorage.setItem('feedback', JSON.stringify(feedback));
+  }, [feedback]);
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
   const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
@@ -20,7 +25,6 @@ export default function App() {
 
   const resetFeedback = () => setFeedback({ good: 0, neutral: 0, bad: 0 });
 
-  useEffect(() => {}, [feedback]);
   return (
     <>
       <Description
