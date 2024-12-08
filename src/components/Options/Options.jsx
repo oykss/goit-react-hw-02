@@ -1,20 +1,30 @@
+import css from './Options.module.css';
+
 export default function Options({
   types,
-  callback: { updateFeedback, resetFeedback },
   total,
+  callback: { updateFeedback, resetFeedback },
 }) {
   return (
-    <ul>
+    <ul className={css.list}>
       {types.map(type => (
         <li key={type}>
-          <button type="button" onClick={() => updateFeedback(type)}>
+          <button
+            type="button"
+            onClick={() => updateFeedback(type)}
+            className={css.btn}
+          >
             {type}
           </button>
         </li>
       ))}
       {!total || (
         <li>
-          <button type="button" onClick={() => resetFeedback()}>
+          <button
+            type="button"
+            onClick={() => resetFeedback()}
+            className={css.btnClose}
+          >
             Reset
           </button>
         </li>

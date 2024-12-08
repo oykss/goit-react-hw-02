@@ -1,8 +1,12 @@
 body {
   font-family: sans-serif;
   line-height: 1.5;
-  width: 450px;
-  margin: 0 auto;
+  color: #2d2d2d;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 h1,
@@ -32,17 +36,6 @@ a {
   color: inherit;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th,
-td {
-  padding: 0;
-  text-align: left;
-}
-
 input,
 button,
 textarea,
@@ -58,4 +51,11 @@ button:focus,
 input:focus,
 textarea:focus {
   outline: none;
+}
+
+#root {
+  padding: 16px;
+  width: 80%;
+  border-radius: 8px;
+  box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.3);
 }

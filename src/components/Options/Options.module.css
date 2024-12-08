@@ -1,0 +1,31 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 34px;
+}
+
+.btn {
+  padding: 0 16px;
+  text-transform: capitalize;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  border: 1px solid #2d2d2d;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    color: #6b8e23;
+    border: 1px solid #6b8e23;
+  }
+}
+
+.btnClose {
+  composes: btn;
+
+  &:hover {
+    color: #e32636;
+    border: 1px solid #e32636;
+  }
+}
