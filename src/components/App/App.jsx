@@ -33,7 +33,8 @@ export default function App() {
       />
       <Options
         types={Object.keys(feedback)}
-        callback={{ updateFeedback, resetFeedback }}
+        update={updateFeedback}
+        reset={resetFeedback}
         total={totalFeedback}
       />
       {totalFeedback ? (
