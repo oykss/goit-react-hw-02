@@ -21,7 +21,10 @@ export default function App() {
   const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
 
   const updateFeedback = type =>
-    setFeedback({ ...feedback, [type]: feedback[type] + 1 });
+    setFeedback(prev => ({
+      ...prev,
+      [type]: prev[type] + 1,
+    }));
 
   const resetFeedback = () => setFeedback({ good: 0, neutral: 0, bad: 0 });
 
